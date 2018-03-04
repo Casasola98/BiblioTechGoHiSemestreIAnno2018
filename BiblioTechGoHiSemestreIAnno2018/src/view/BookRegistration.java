@@ -186,12 +186,21 @@ public class BookRegistration extends javax.swing.JDialog {
         }
         
         if(registerB){
-            //if( no existe un libro con ese isbn )
-            //if( is Physic)
-            // Le dice al sistema que cree el libro fisico
-            //else
-            // Le dice al sistema que cree el libro digital
-            dispose();
+            if(theSystem.isValidISBN(isbn)){
+                if(! theSystem.existBook(isbn)){
+                    if(theSystem.isNumber(year)){
+                        if(isPhysic){
+                            if(theSystem.isNumber(stock)){
+                                theSystem.addPhysicBook(isbn, name, Integer.parseInt(year), editorial, Integer.parseInt(stock));
+                                dispose();
+                            }
+                        }
+                        else{
+                            dispose();
+                        }
+                    }
+                }
+            }
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
 

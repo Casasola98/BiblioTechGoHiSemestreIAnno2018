@@ -96,7 +96,7 @@ public class logUser extends javax.swing.JDialog {
                 if(theUser.isCorrectPassword(userPass)){
                     this.setVisible(false);
                     if (registrationType == 1){
-                        AudiovisualRegistration theWindow = new AudiovisualRegistration(new javax.swing.JFrame(), true);
+                        AudiovisualRegistration theWindow = new AudiovisualRegistration(new javax.swing.JFrame(), true, theSystem);
                         theWindow.setVisible(true);
                     }
                     else{

@@ -60,6 +60,71 @@ public class BiblioTech {
         return null;
     }
     
+    public boolean existAudiovisual(String theID){
+        for(Audiovisual theAudio : audiovisuals){
+            if(theAudio.getId().equals(theID)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean existBook(String theID){
+        for(Book theBook : books){
+            if(theBook.getIsbn().equals(theID)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean existStudent(String theID){
+        for(Student theStudent : students){
+            if(theStudent.getId().equals(theID)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean isValidISBN(String theID){
+        try{
+            double possible = Double.parseDouble(theID);
+            if(theID.length() == 10)
+                return true;
+            return false;
+        }
+        catch(Exception e){
+            return false;
+        }
+    }
+    
+    public boolean isNumber(String theNumber){
+        try{
+            int possible = Integer.parseInt(theNumber);
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
+    }
+    
+    public void addDigitalBook(String pIsbn, String pName, int pYear, String pEdit){
+        books.add(new Book(pIsbn, pName, pYear, pEdit, "digital"));
+    }
+    
+    public void addPhysicBook(String pIsbn, String pName, int pYear, String pEdit, int pStock){
+        books.add(new Physical(pIsbn, pName, pYear, pEdit, "physic", pStock));   
+    }
+    
+    public void addAudiovisual(String pId, String pType, String pBrand, String pDesc, int pStock){
+        audiovisuals.add(new Audiovisual(pId, pType, pBrand, pDesc, pStock));   
+    }
+    
+    public void addStudent(String pId, String career, String name){
+        students.add(new Student( career + pId, name));   
+    }
+    
     //Getters and Setters
     public void setPassword(String password) {
         this.password = password;
