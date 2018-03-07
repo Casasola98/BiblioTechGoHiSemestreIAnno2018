@@ -59,4 +59,12 @@ public class Audiovisual {
         this.stock = stock;
     }
     
+    public void reduceStock(){
+        stock--;
+    }
+    
+    public void increaseStock(int increase){
+        stock += increase;
+    }
+    
 }
