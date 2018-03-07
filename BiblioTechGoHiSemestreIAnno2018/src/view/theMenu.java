@@ -2,6 +2,7 @@
 package view;
 
 import domain.BiblioTech;
+import javax.swing.JOptionPane;
 
 public class theMenu extends javax.swing.JFrame {
 
@@ -114,9 +115,19 @@ public class theMenu extends javax.swing.JFrame {
                 theWindow.setVisible(true);
                 this.setVisible(true);
             }
+            else{
+                errorMessage("Wrong password");
+            }
+        }
+        else{
+            errorMessage("You should write the password, to access BiblioTech");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
+    private void errorMessage(String message){
+        JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.WARNING_MESSAGE);
+    } 
+    
     // AL ser presionado, abre la ventana de cambio de contrasenna del sistema
     private void changePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePActionPerformed
         this.setVisible(false);

@@ -21,8 +21,7 @@ public class OptionW extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         btnAudio = new javax.swing.JButton();
         btnBook = new javax.swing.JButton();
-        btnBook1 = new javax.swing.JButton();
-        btnBook2 = new javax.swing.JButton();
+        btnReturn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         addAudio = new javax.swing.JMenuItem();
@@ -55,17 +54,10 @@ public class OptionW extends javax.swing.JDialog {
             }
         });
 
-        btnBook1.setText("Return Audiovisual Material");
-        btnBook1.addActionListener(new java.awt.event.ActionListener() {
+        btnReturn.setText("Return Stuff");
+        btnReturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBook1ActionPerformed(evt);
-            }
-        });
-
-        btnBook2.setText("Return Book");
-        btnBook2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBook2ActionPerformed(evt);
+                btnReturnActionPerformed(evt);
             }
         });
 
@@ -76,15 +68,13 @@ public class OptionW extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnBook1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnAudio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(35, 35, 35)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnBook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnBook2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addComponent(btnAudio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnBook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnReturn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -97,10 +87,8 @@ public class OptionW extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(btnBook)
                 .addGap(18, 18, 18)
-                .addComponent(btnBook1)
-                .addGap(18, 18, 18)
-                .addComponent(btnBook2)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addComponent(btnReturn)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Options");
@@ -186,13 +174,12 @@ public class OptionW extends javax.swing.JDialog {
         this.setVisible(true);
     }//GEN-LAST:event_btnAddStuActionPerformed
 
-    private void btnBook1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBook1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBook1ActionPerformed
-
-    private void btnBook2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBook2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBook2ActionPerformed
+    private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
+        this.setVisible(false);
+        returnStuffW theWindow = new returnStuffW(new javax.swing.JFrame(), true, theSystem);
+        theWindow.setVisible(true);
+        this.setVisible(true);
+    }//GEN-LAST:event_btnReturnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -201,8 +188,7 @@ public class OptionW extends javax.swing.JDialog {
     private javax.swing.JMenuItem btnAddStu;
     private javax.swing.JButton btnAudio;
     private javax.swing.JButton btnBook;
-    private javax.swing.JButton btnBook1;
-    private javax.swing.JButton btnBook2;
+    private javax.swing.JButton btnReturn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

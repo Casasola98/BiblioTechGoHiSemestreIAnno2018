@@ -2,6 +2,7 @@
 package view;
 
 import domain.BiblioTech;
+import javax.swing.JOptionPane;
 
 public class PasswordChange extends javax.swing.JDialog {
 
@@ -96,14 +97,29 @@ public class PasswordChange extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void errorMessage(String message){
+        JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.WARNING_MESSAGE);
+    } 
+    
     private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
         String newPass = new String(passNew.getPassword());
         String oldPass = new String(passOld.getPassword());
         if((! theSystem.fieldIsEmpty(newPass))&&(! theSystem.fieldIsEmpty(oldPass))){
-            if((theSystem.isCorrectPassword(oldPass))&&(! theSystem.isCorrectPassword(newPass))){
-                theSystem.setPassword(newPass);
-                dispose();
+            if(theSystem.isCorrectPassword(oldPass)){
+                if(! theSystem.isCorrectPassword(newPass)){
+                    theSystem.setPassword(newPass);
+                    dispose();
+                }
+                else{
+                    errorMessage("The new password can't be the same password");
+                }
             }
+            else{
+                errorMessage("Wrong password");
+            }
+        }
+        else{
+            errorMessage("You should fill the passwords to change the actual");
         }
     }//GEN-LAST:event_btnChangeActionPerformed
 

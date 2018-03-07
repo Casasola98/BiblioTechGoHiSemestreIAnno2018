@@ -2,6 +2,7 @@
 package view;
 
 import domain.BiblioTech;
+import javax.swing.JOptionPane;
 
 public class addStuW extends javax.swing.JDialog {
 
@@ -102,6 +103,10 @@ public class addStuW extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void errorMessage(String message){
+        JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.WARNING_MESSAGE);
+    } 
+    
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         String id = idFld.getText();
         String name = nameFld.getText();
@@ -124,10 +129,18 @@ public class addStuW extends javax.swing.JDialog {
         }
         
         if((! theSystem.fieldIsEmpty(id))&&(! theSystem.fieldIsEmpty(name))){
-            if((theSystem.isNumber(id))&&(! theSystem.existStudent(career + id))){
-                theSystem.addStudent(id, career, name);
-                dispose();
+            if(theSystem.isNumber(id)){
+                if(! theSystem.existStudent(career + id)){
+                    theSystem.addStudent(id, career, name);
+                    dispose();
+                }else{
+                    errorMessage("The ID is already registered");
+                }
+            }else{
+                errorMessage("The field for the ID, should has only numbers");
             }
+        }else{
+            errorMessage("You should fill all the spaces");
         }
         
     }//GEN-LAST:event_btnAddActionPerformed

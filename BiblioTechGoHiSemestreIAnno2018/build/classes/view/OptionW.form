@@ -93,16 +93,13 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnBook1" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnAudio" max="32767" attributes="0"/>
-                          <Component id="jLabel1" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btnBook" max="32767" attributes="0"/>
-                                  <Component id="btnBook2" alignment="0" max="32767" attributes="0"/>
-                              </Group>
+                      <Component id="btnAudio" max="32767" attributes="0"/>
+                      <Component id="jLabel1" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btnBook" max="32767" attributes="0"/>
+                              <Component id="btnReturn" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -120,10 +117,8 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnBook" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnBook1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnBook2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="34" max="32767" attributes="0"/>
+                  <Component id="btnReturn" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="38" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -157,20 +152,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBookActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnBook1">
+        <Component class="javax.swing.JButton" name="btnReturn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Return Audiovisual Material"/>
+            <Property name="text" type="java.lang.String" value="Return Stuff"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBook1ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnBook2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Return Book"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBook2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReturnActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

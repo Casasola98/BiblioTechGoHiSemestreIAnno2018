@@ -2,6 +2,7 @@
 package view;
 
 import domain.BiblioTech;
+import javax.swing.JOptionPane;
 
 public class AudiovisualRegistration extends javax.swing.JDialog {
 
@@ -147,6 +148,10 @@ public class AudiovisualRegistration extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void errorMessage(String message){
+        JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.WARNING_MESSAGE);
+    } 
+    
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         String id = idFld.getText();
         String brand = brandFld.getText();
@@ -158,6 +163,8 @@ public class AudiovisualRegistration extends javax.swing.JDialog {
         if((! theSystem.fieldIsEmpty(id))&&(! theSystem.fieldIsEmpty(brand))
                 &&(! theSystem.fieldIsEmpty(description))&&(! theSystem.fieldIsEmpty(stock))){
             registerB = true;
+        }else{
+            errorMessage("You should fill all the spaces");
         }
         
         String typeO = "";
@@ -188,8 +195,12 @@ public class AudiovisualRegistration extends javax.swing.JDialog {
                 if((theSystem.isNumber(stock))&&(theSystem.isNumber(id))){
                     theSystem.addAudiovisual(id, typeO, brand, description, Integer.parseInt(stock));
                     dispose();
+                }else{
+                        errorMessage("The stock and the ID, should have just digits");
+                    }
+            }else{
+                    errorMessage("The ID is already registered");
                 }
-            }
         }
         
         

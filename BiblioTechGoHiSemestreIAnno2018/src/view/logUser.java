@@ -3,6 +3,7 @@ package view;
 
 import domain.BiblioTech;
 import domain.User;
+import javax.swing.JOptionPane;
 
 public class logUser extends javax.swing.JDialog {
 
@@ -87,6 +88,10 @@ public class logUser extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void errorMessage(String message){
+        JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.WARNING_MESSAGE);
+    } 
+    
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String userName = userField.getText();
         String userPass = new String(passUser.getPassword());
@@ -104,8 +109,14 @@ public class logUser extends javax.swing.JDialog {
                         theWindow.setVisible(true);
                     }
                     dispose();
+                }else{
+                    errorMessage("Wrong Password");
                 }
+            }else{
+                errorMessage("The User ID doesn't exist");
             }
+        }else{
+            errorMessage("You should fill all the spaces");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
