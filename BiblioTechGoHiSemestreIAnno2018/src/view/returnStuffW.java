@@ -1,7 +1,14 @@
 
 package view;
 
+import domain.Audiovisual;
 import domain.BiblioTech;
+import domain.AudiovisualReservation;
+import domain.Book;
+import domain.BookReservation;
+import domain.Physical;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 public class returnStuffW extends javax.swing.JDialog {
 
@@ -17,6 +24,10 @@ public class returnStuffW extends javax.swing.JDialog {
         typeGroup.add(rbtBook);
     }
 
+    public int daysBetween(Date d1, Date d2)
+    {
+        return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -125,11 +136,74 @@ public class returnStuffW extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+ 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
         String materialID = materialFld.getText();
         String studentID = idFld.getText();
-        
+        if(rbtAudio.isSelected())
+        {
+            for(AudiovisualReservation a:theSystem.getAudioReserve())
+            {
+                if(a.getReservedAudiov().getId().equals(materialID) && a.getTheStudent().getId().equals(studentID))
+                {
+                    Date currentDate = new Date();
+                    Date returnDate = a.getDeliveryDate();
+                    if(currentDate.before(returnDate) || currentDate.equals(returnDate))
+                    {
+                        JOptionPane.showMessageDialog(null, "Material Audiovisual devuelto sin inconvenientes");
+                        Audiovisual audiovisual = a.getReservedAudiov();
+                        audiovisual.increaseStock(1);
+                        theSystem.getAudioReserve().remove(a);
+                        break;
+                    }
+                    else
+                    {
+                        int multa = theSystem.getMulta() * daysBetween(currentDate,returnDate);
+                        JOptionPane.showMessageDialog(null, "Debe pagar " + Integer.toString(multa) + " colones de multa");
+                        Audiovisual audiovisual = a.getReservedAudiov();
+                        audiovisual.increaseStock(1);
+                        theSystem.getAudioReserve().remove(a);
+                        break;
+                    }
+                }
+            }
+        }
+        else
+        {
+            for(BookReservation b:theSystem.getBookReserve())
+            {
+                if(b.getReservedBook().getIsbn().equals(materialID) && b.getTheStudent().getId().equals(studentID))
+                {
+                    Date currentDate = new Date();
+                    Date returnDate = b.getDeliveryDate();
+                    if(currentDate.before(returnDate) || currentDate.equals(returnDate))
+                    {
+                        JOptionPane.showMessageDialog(null, "Libro devuelto sin inconvenientes");
+                        Book book = b.getReservedBook();
+                        if(book.getType().equals("physic"))
+                        {
+                            Physical p = (Physical)book;
+                            p.increaseStock(1);
+                        }
+                        theSystem.getBookReserve().remove(b);
+                        break;
+                    }
+                    else
+                    {
+                        int multa = theSystem.getMulta() * daysBetween(currentDate,returnDate);
+                        JOptionPane.showMessageDialog(null, "Debe pagar " + Integer.toString(multa) + " colones de multa");
+                        Book book = b.getReservedBook();
+                        if(book.getType().equals("physic"))
+                        {
+                            Physical p = (Physical)book;
+                            p.increaseStock(1);
+                        }
+                        theSystem.getBookReserve().remove(b);
+                        break;
+                    }
+                }
+            }
+        }
         dispose();
     }//GEN-LAST:event_btnReturnActionPerformed
 

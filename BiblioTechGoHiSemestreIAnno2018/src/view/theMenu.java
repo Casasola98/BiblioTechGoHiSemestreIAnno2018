@@ -1,6 +1,7 @@
 
 package view;
 
+import XML.XML;
 import domain.BiblioTech;
 import javax.swing.JOptionPane;
 
@@ -29,6 +30,11 @@ public class theMenu extends javax.swing.JFrame {
         setTitle("Login");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 153));
 
@@ -135,6 +141,12 @@ public class theMenu extends javax.swing.JFrame {
         theWindow.setVisible(true);
         this.setVisible(true);
     }//GEN-LAST:event_changePActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        XML.writeXML(theSystem);
+        System.out.println("Guardando archivo.");
+        System.out.println("Salir del Programa.");
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
