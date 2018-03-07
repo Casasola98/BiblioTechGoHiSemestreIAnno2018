@@ -180,7 +180,7 @@ public class BookRegistration extends javax.swing.JDialog {
         boolean registerB = false;
         
         if((! theSystem.fieldIsEmpty(isbn))&&(! theSystem.fieldIsEmpty(name))
-                &&(! theSystem.fieldIsEmpty(year))&&(! theSystem.fieldIsEmpty(editorial))){
+                &&(! theSystem.fieldIsEmpty(year))&&(! theSystem.fieldIsEmpty(editorial))){ //revisa que las casillas esten llenas
             registerB = true;
         }
         else{
@@ -188,24 +188,27 @@ public class BookRegistration extends javax.swing.JDialog {
         }
         
         if (isPhysic){
-            if(theSystem.fieldIsEmpty(stock)){
+            if(theSystem.fieldIsEmpty(stock)){ //Si el libro es fisico, debe revisar que la casilla de stock no esta vacia
                 registerB = false;
                 errorMessage("If the book is not digital, you should write its stock");
             }
         }
         
-        if(registerB){
-            if(theSystem.isValidISBN(isbn)){
-                if(! theSystem.existBook(isbn)){
-                    if(theSystem.isNumber(year)){
-                        if(isPhysic){
-                            if(theSystem.isNumber(stock)){
+        if(registerB){ //Si se ingresaron datos, inicia el chequeo de estos para validarlos
+            if(theSystem.isValidISBN(isbn)){ //revisa que el ISBN este formado de 10 digitos
+                if(! theSystem.existBook(isbn)){ //revisa que el isbn no se encuentre ya en uso
+                    if(theSystem.isNumber(year)){ //chequea que el anno ingresado sea realmente de numeros
+                        if(isPhysic){ 
+                            if(theSystem.isNumber(stock)){ //Si es un libro fisico revisa que el contenido del stock ingresado sean digitos
+                                //Agrega el libro fisico
                                 theSystem.addPhysicBook(isbn, name, Integer.parseInt(year), editorial, Integer.parseInt(stock));
                                 dispose();
                             }else{
                                 errorMessage("The stock should has just digits");
                             }
                         }else{
+                            //Agrega el libro digital
+                            theSystem.addDigitalBook(isbn, name, Integer.parseInt(year), editorial);
                             dispose();
                         }
                     }else{

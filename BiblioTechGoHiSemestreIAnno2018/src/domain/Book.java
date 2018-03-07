@@ -58,7 +58,5 @@ public class Book {
     private void setType(String type) {
         this.type = type;
     }
-    
-    
-    
+ 
 }

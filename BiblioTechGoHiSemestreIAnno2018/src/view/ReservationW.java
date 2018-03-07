@@ -1,7 +1,14 @@
 
 package view;
 
+import domain.Audiovisual;
+import domain.AudiovisualReservation;
 import domain.BiblioTech;
+import domain.Book;
+import domain.BookReservation;
+import domain.Physical;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 public class ReservationW extends javax.swing.JDialog {
 
@@ -25,23 +32,15 @@ public class ReservationW extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnRegister = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        searchBox = new javax.swing.JTextArea();
-        searchFld = new javax.swing.JTextField();
         idFld = new javax.swing.JTextField();
-        perID = new javax.swing.JRadioButton();
-        perName = new javax.swing.JRadioButton();
+        idFld1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 153));
-
-        jLabel1.setFont(new java.awt.Font("Dubai", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Search");
 
         jLabel2.setFont(new java.awt.Font("Dubai", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -55,65 +54,47 @@ public class ReservationW extends javax.swing.JDialog {
             }
         });
 
-        searchBox.setEditable(false);
-        searchBox.setColumns(20);
-        searchBox.setRows(5);
-        jScrollPane1.setViewportView(searchBox);
-
-        perID.setText("Per ID");
-
-        perName.setText("Per Name");
+        jLabel3.setFont(new java.awt.Font("Dubai", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Material ID");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(searchFld)))
-                .addContainerGap(44, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(idFld, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(idFld, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(48, 48, 48))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(perID)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(perName)
-                        .addGap(23, 23, 23)))
-                .addGap(130, 130, 130))
+                        .addComponent(jLabel3)
+                        .addGap(20, 20, 20)
+                        .addComponent(idFld1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(searchFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(perID)
-                    .addComponent(perName))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(idFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(idFld1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(btnRegister)
-                .addGap(39, 39, 39))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -130,7 +111,73 @@ public class ReservationW extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void errorMessage(String message){
+        JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.WARNING_MESSAGE);
+    } 
+    
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        String idStudent = idFld.getText();
+        String idMaterial = idFld1.getText();
+        Date today=new Date();                                              //Se crea fecha con fecha y hora actual
+        long ltime=today.getTime()+ theSystem.getDays()*24*60*60*1000;      //Se le agregan cantidad de dias a la hora actual
+        Date date=new Date(ltime);                                          //Se crea fecha con los dias agregados
+        
+        if(theSystem.existStudent(idStudent))
+        {
+            if(reserveType==1)
+            {
+                if(theSystem.existAudiovisual(idMaterial))
+                {
+                    Audiovisual audiovisual = theSystem.obtainAudiovisual(idMaterial);
+                    if(audiovisual.getStock()>0)
+                    {
+                        audiovisual.reduceStock();
+                        theSystem.getAudioReserve().add(new AudiovisualReservation(audiovisual,theSystem.obtainStudent(idStudent),date));
+                    }
+                    else
+                    {
+                        errorMessage("No audiovisuals left.");
+                    }
+                }
+                else
+                {
+                    errorMessage("Audiovisual doesnt exist.");
+                }
+            }
+            else
+            {
+                System.out.println(idMaterial);
+                if(theSystem.existBook(idMaterial))
+                {
+                    Book b = theSystem.obtainBook(idMaterial);
+                    if(b.getType().equals("physic"))
+                    {
+                        Physical p = (Physical) b;
+                        if(p.getStock()>0)
+                        {
+                            p.reduceStock();
+                            theSystem.getBookReserve().add(new BookReservation(b,theSystem.obtainStudent(idStudent),date));
+                        }
+                        else
+                        {
+                            errorMessage("No books left.");
+                        }
+                    }
+                    else
+                    {
+                        theSystem.getBookReserve().add(new BookReservation(b,theSystem.obtainStudent(idStudent),date));
+                    }
+                }
+                else
+                {
+                    errorMessage("Book doesnt exist.");
+                }
+            }
+        }
+        else
+        {
+            errorMessage("Studient doesnt exist.");
+        }      
         dispose();
     }//GEN-LAST:event_btnRegisterActionPerformed
 
@@ -138,13 +185,9 @@ public class ReservationW extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
     private javax.swing.JTextField idFld;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField idFld1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JRadioButton perID;
-    private javax.swing.JRadioButton perName;
-    private javax.swing.JTextArea searchBox;
-    private javax.swing.JTextField searchFld;
     // End of variables declaration//GEN-END:variables
 }

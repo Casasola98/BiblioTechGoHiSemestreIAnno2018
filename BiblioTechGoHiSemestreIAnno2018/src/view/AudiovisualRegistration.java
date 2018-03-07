@@ -161,7 +161,7 @@ public class AudiovisualRegistration extends javax.swing.JDialog {
         boolean registerB = false;
         
         if((! theSystem.fieldIsEmpty(id))&&(! theSystem.fieldIsEmpty(brand))
-                &&(! theSystem.fieldIsEmpty(description))&&(! theSystem.fieldIsEmpty(stock))){
+                &&(! theSystem.fieldIsEmpty(description))&&(! theSystem.fieldIsEmpty(stock))){ //Chequea que todas las casillas esten llenas
             registerB = true;
         }else{
             errorMessage("You should fill all the spaces");
@@ -191,9 +191,9 @@ public class AudiovisualRegistration extends javax.swing.JDialog {
         }
         
         if(registerB){
-            if(! theSystem.existAudiovisual(id)){
-                if((theSystem.isNumber(stock))&&(theSystem.isNumber(id))){
-                    theSystem.addAudiovisual(id, typeO, brand, description, Integer.parseInt(stock));
+            if(! theSystem.existAudiovisual(id)){ //Revisa que el id no este ya en uso
+                if((theSystem.isNumber(stock))&&(theSystem.isNumber(id))){ //revisa que stock e ID sea de solo digitos
+                    theSystem.addAudiovisual(id, typeO, brand, description, Integer.parseInt(stock)); //Agrega el audiovisual
                     dispose();
                 }else{
                         errorMessage("The stock and the ID, should have just digits");

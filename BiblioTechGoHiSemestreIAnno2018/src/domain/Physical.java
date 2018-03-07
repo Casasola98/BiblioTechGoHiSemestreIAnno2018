@@ -20,10 +20,12 @@ public class Physical extends Book {
         this.stock = stock;
     }
     
+    //reduce stock del libro al ser reservado
     public void reduceStock(){
         stock--;
     }
     
+    //aumenta el stock del libro al ser devuelto por el usuario
     public void increaseStock(int increase){
         stock += increase;
     }

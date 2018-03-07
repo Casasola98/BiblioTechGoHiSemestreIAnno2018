@@ -148,14 +148,14 @@ public class OptionW extends javax.swing.JDialog {
 
     private void addAudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAudioActionPerformed
         this.setVisible(false);
-        logUser theWindow = new logUser(new javax.swing.JFrame(), true, 1, theSystem);
+        LogUser theWindow = new LogUser(new javax.swing.JFrame(), true, 1, theSystem);
         theWindow.setVisible(true);
         this.setVisible(true);
     }//GEN-LAST:event_addAudioActionPerformed
 
     private void addBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookActionPerformed
         this.setVisible(false);
-        logUser theWindow = new logUser(new javax.swing.JFrame(), true, 2, theSystem);
+        LogUser theWindow = new LogUser(new javax.swing.JFrame(), true, 2, theSystem);
         theWindow.setVisible(true);
         this.setVisible(true);
     }//GEN-LAST:event_addBookActionPerformed
@@ -169,14 +169,14 @@ public class OptionW extends javax.swing.JDialog {
 
     private void btnAddStuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStuActionPerformed
         this.setVisible(false);
-        addStuW theWindow = new addStuW(new javax.swing.JFrame(), true, theSystem);
+        AddStuW theWindow = new AddStuW(new javax.swing.JFrame(), true, theSystem);
         theWindow.setVisible(true);
         this.setVisible(true);
     }//GEN-LAST:event_btnAddStuActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
         this.setVisible(false);
-        returnStuffW theWindow = new returnStuffW(new javax.swing.JFrame(), true, theSystem);
+        ReturnStuffW theWindow = new ReturnStuffW(new javax.swing.JFrame(), true, theSystem);
         theWindow.setVisible(true);
         this.setVisible(true);
     }//GEN-LAST:event_btnReturnActionPerformed
